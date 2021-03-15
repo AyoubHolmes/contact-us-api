@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact US</title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>Contact Us</h1>
+    </div>
+    <div style="text-align: center;">
+        <input name="email" onchange="emailHandler()" type="text" placeholder="Email...">
+        <input name="objective" onchange="objectiveHandler()" type="text" placeholder="Objective...">
+        <input name="body" onchange="bodyHandler()" type="text" placeholder="Message...">
+        <button type="submit" id="submitButton">SUBMIT <i class="fa fa-arrow-right"></i></button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        let userMessage = {
+            email: '',
+            objective: '',
+            body: ''
+        }
+        const emailHandler = () => userMessage.email = $('input[name="email"]').val();
+        const objectiveHandler = () => userMessage.objective = $('input[name="objective"]').val();
+        const bodyHandler = () => userMessage.body = $('input[name="body"]').val();
+        $(document).ready(function() {
+            $('#submitButton').click((event) => {
+                event.preventDefault();
+                $.post('http://localhost:5000/api/createMessage/', userMessage, (data, status) => {})
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -3,8 +3,8 @@ const sendMail = require('./send-mail');
 const sendmail = require('./send-mail');
 
 createMessage = async(req, res) => {
-    console.log(req.body)
-    const adminMail = "admin@domain.com"
+    console.log(req)
+    const adminMail = "admin@domain.com" // ADD UR ADMIN MAIL
     db.ContactUs.create({
         email: req.body.email,
         objective: req.body.objective,
@@ -13,7 +13,7 @@ createMessage = async(req, res) => {
         sendMail(req.body.email, '') /////// Here write the content of the message that should be sent to the client
         sendMail(adminMail, '') /////// Here write the content of the message that should be sent to the admin
         res.send(submittedMessage)
-    });
+    }).catch(() => sendMail(req.body.email, ''));
 }
 
 deleteMessage = (req, res) => {

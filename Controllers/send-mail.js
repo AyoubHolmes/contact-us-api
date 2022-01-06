@@ -5,13 +5,13 @@ const sendMail = async(email, message) => {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'email', //// EMAIL here is the same as 
-            pass: 'password'
+            user: 'boulbaz147@gmail.com', //// EMAIL here is the same as 
+            pass: 'yami_@1470'
         }
     });
 
     var mailOptions = {
-        from: 'email', /// HEEERRE
+        from: 'boulbaz147@gmail.com', /// HEEERRE
         to: `${email}`,
         subject: 'Confirmation email: We got your message',
         text: message
